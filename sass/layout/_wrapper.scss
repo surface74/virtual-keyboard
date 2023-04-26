@@ -1,0 +1,16 @@
+.wrapper {
+  max-width: $content-width;
+  margin: auto;
+}
+
+@include respond-to("tablet") {
+  .wrapper {
+    max-width: $tablet-width;
+  }
+}
+
+@include respond-to("mobile") {
+  .wrapper {
+    max-width: $mobile-width;
+  }
+}
