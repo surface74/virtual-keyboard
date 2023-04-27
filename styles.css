@@ -22,7 +22,7 @@
   font-weight: 700;
   src: url("../../assets/fonts/arial-bold-italic.ttf") format("truetype");
 }
-.button, .keyboard, .display {
+.keyboard, .display {
   border: 2px solid #aaaaaa;
   border-radius: 10px;
 }
@@ -428,7 +428,7 @@ img {
 }
 
 .wrapper {
-  max-width: 90rem;
+  max-width: 92rem;
   margin: auto;
 }
 
@@ -445,7 +445,7 @@ img {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
-  background: #cccccc;
+  background: #8a8a8a;
   padding: 1rem;
 }
 
@@ -462,25 +462,36 @@ img {
   font-size: 2rem;
   width: 5rem;
   height: 5rem;
-  background: #a5a5a5;
+  border: none;
+  border-radius: 10px;
+  background: #3b3b3b;
+  color: #ffffff;
   transition: all 0.1s;
 }
 .button:hover {
-  background: #00dddd;
+  background: #00cccc;
+  color: #000000;
 }
 .button:active {
-  background: #00ffff;
+  background: #00eeee;
+  color: #000000;
+  scale: 1.05;
 }
 
 .button_active {
-  background: #00ffff;
+  background: #00eeee;
+  color: #000000;
+  scale: 1.05;
 }
 
 .button_special {
-  border-color: #707070;
-  background: #707070;
+  background: #0f141f;
 }
 
 .button_double {
-  width: 10rem;
+  width: 11rem;
+}
+
+.button_space {
+  width: 41rem;
 }/*# sourceMappingURL=styles.css.map */

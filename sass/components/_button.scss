@@ -5,30 +5,38 @@
   font-size: 2rem;
   width: $button-size;
   height: $button-size;
-  @extend %border;
+  border: none;
+  border-radius: 10px;
   background: $color-button;
+  color: $color-button-text;
   transition: all 0.1s;
 
   &:hover {
     background: $color-button-hover;
+    color: $color-button-hover-text;
   }
 
   &:active {
     background: $color-button-active;
+    color: $color-button-hover-text;
+    scale: 1.05;
   }
 }
 
 .button_active {
   background: $color-button-active;
+  color: $color-button-hover-text;
+  scale: 1.05;
 }
 
 .button_special {
-  border-color: $color-button-special;
   background: $color-button-special;
 }
 
 .button_double {
-width: calc(2 * $button-size);
+  width: calc(2 * $button-size + $space-between);
 }
 
-
+.button_space {
+  width: calc(7 * $button-size + 6 * $space-between);
+}
