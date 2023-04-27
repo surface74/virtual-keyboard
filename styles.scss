@@ -1,11 +1,16 @@
 @charset "UTF-8";
 
-@import "../../sass/base/fonts";
+@import "sass/base/fonts";
 
-@import "../../sass/abstracts/variables";
+@import "sass/abstracts/variables";
+@import "sass/abstracts/placeholders";
 
-@import "../../sass/base/fonts";
-@import "../../sass/base/normalize";
-@import "../../sass/base/common";
+@import "sass/base/fonts";
+@import "sass/base/normalize";
+@import "sass/base/common";
 
-@import "../../sass/layout/wrapper";
+@import "sass/layout/wrapper";
+
+@import "sass/components/display";
+@import "sass/components/keyboard";
+@import "sass/components/button";
