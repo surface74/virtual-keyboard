@@ -475,13 +475,13 @@ img {
 .button:active {
   background: #00eeee;
   color: #000000;
-  scale: 1.05;
+  scale: 1.02;
 }
 
 .button_active {
   background: #00eeee;
   color: #000000;
-  scale: 1.05;
+  scale: 1.02;
 }
 
 .button_special {
