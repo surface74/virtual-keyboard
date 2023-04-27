@@ -1,0 +1,9 @@
+.display {
+  width: 100%;
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
+  resize: none;
+  padding: $space-between;
+  outline: none;
+  @extend %border;
+}

@@ -1,0 +1,34 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  width: $button-size;
+  height: $button-size;
+  @extend %border;
+  background: $color-button;
+  transition: all 0.1s;
+
+  &:hover {
+    background: $color-button-hover;
+  }
+
+  &:active {
+    background: $color-button-active;
+  }
+}
+
+.button_active {
+  background: $color-button-active;
+}
+
+.button_special {
+  border-color: $color-button-special;
+  background: $color-button-special;
+}
+
+.button_double {
+width: calc(2 * $button-size);
+}
+
+
