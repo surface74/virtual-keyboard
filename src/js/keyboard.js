@@ -9,6 +9,7 @@ export default class Keyboard {
     this.keys = keys;
     this.locale = this.getLocale();
     this.shiftKeyPressed = false;
+    this.capsLockPressed = true;
     this.helper = new HtmlHelper();
 
   }
@@ -21,7 +22,12 @@ export default class Keyboard {
         const buttonId = button.dataset.id;
         const captionSource = `key${this.locale}${this.shiftKeyPressed ? 'Shift' : ''}`;
         if (buttonId in this.keys && captionSource in this.keys[buttonId]) {
-          button.textContent = this.keys[buttonId][captionSource] || '';
+          let buttonCaption = this.keys[buttonId][captionSource] || '';
+          console.log('buttonCaption: ', buttonCaption, this.isLetter(buttonCaption));
+          if (this.capsLockPressed && this.isLetter(buttonCaption)) {
+            buttonCaption = buttonCaption.toUpperCase();
+          }
+          button.textContent = buttonCaption;
         }
       }
     }
@@ -36,7 +42,7 @@ export default class Keyboard {
   }
 
   getLocale() {
-    return 'Ru';
+    return this.LOCALE_EN;
   }
 
   saveLocale() {
@@ -54,6 +60,9 @@ export default class Keyboard {
 
     document.body.prepend(footer);
     document.body.prepend(main);
+
+    this.display = document.querySelector('.display');
+    this.addEventListeners();
   }
 
   createSectionDisplay() {
@@ -215,5 +224,31 @@ export default class Keyboard {
 
   createElement(elementInfo) {
     return this.helper.createElement(elementInfo);
+  }
+
+  addEventListeners() {
+    document.addEventListener('keydown', this.onKeydown.bind(this));
+    // this.keyboard.addEventListener('pointerdown', this.onPointerdown);
+  }
+
+  highlightButton(keyCode) {
+    return false;
+  }
+
+  onKeydown(e) {
+    const keyCode = e.keyCode;
+    this.highlightButton(keyCode);
+    this.print(e.key);
+    console.log(e.key);
+
+  }
+
+
+  print(key) {
+    console.log(key);
+  }
+
+  isLetter(string) {
+    return string.length === 1 && !!string.match(/[a-zа-яё]/);
   }
 }
