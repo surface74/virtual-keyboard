@@ -478,6 +478,7 @@ img {
   scale: 1.02;
 }
 
+.button_special.button_active,
 .button_active {
   background: #00eeee;
   color: #000000;

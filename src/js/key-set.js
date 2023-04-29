@@ -89,6 +89,10 @@ export default class KeySet {
       28: {
         keyRu: 'Del', keyRuShift: 'Del', keyEn: 'Del', keyEnShift: 'Del', code: 'Delete', keyCode: 46,
       },
+
+      29: {
+        keyRu: 'CapsLock', keyRuShift: 'CapsLock', keyEn: 'CapsLock', keyEnShift: 'CapsLock', code: 'CapsLock', keyCode: 20,
+      },
     };
   }
 }

@@ -9,7 +9,7 @@ export default class Keyboard {
     this.keys = keys;
     this.locale = this.getLocale();
     this.shiftKeyPressed = false;
-    this.capsLockPressed = true;
+    this.capsLockPressed = false;
     this.helper = new HtmlHelper();
 
   }
@@ -23,7 +23,6 @@ export default class Keyboard {
         const captionSource = `key${this.locale}${this.shiftKeyPressed ? 'Shift' : ''}`;
         if (buttonId in this.keys && captionSource in this.keys[buttonId]) {
           let buttonCaption = this.keys[buttonId][captionSource] || '';
-          console.log('buttonCaption: ', buttonCaption, this.isLetter(buttonCaption));
           if (this.capsLockPressed && this.isLetter(buttonCaption)) {
             buttonCaption = buttonCaption.toUpperCase();
           }
@@ -228,27 +227,71 @@ export default class Keyboard {
 
   addEventListeners() {
     document.addEventListener('keydown', this.onKeydown.bind(this));
+    document.addEventListener('keyup', this.onKeyup.bind(this));
     // this.keyboard.addEventListener('pointerdown', this.onPointerdown);
   }
 
-  highlightButton(keyCode) {
-    return false;
-  }
 
   onKeydown(e) {
-    const keyCode = e.keyCode;
-    this.highlightButton(keyCode);
+    e.preventDefault();
+    if (e.code !== 'CapsLock') {
+      this.lightOnButton(e.keyCode);
+    } else {
+      this.capsLockPressed = this.lightToggleButton(e.keyCode);
+      this.refreshKeyboard();
+    }
     this.print(e.key);
-    console.log(e.key);
-
   }
 
+  onKeyup(e) {
+    if (e.code !== 'CapsLock') {
+      this.lightOffButton(e.keyCode);
+      this.print(e.key);
+    }
+  }
+
+  lightToggleButton(keyCode) {
+    const button = this.getButton(keyCode);
+    if (button) {
+      return button.classList.toggle('button_active');
+    }
+  }
+
+  lightOnButton(keyCode) {
+    const button = this.getButton(keyCode);
+    if (button) {
+      button.classList.add('button_active');
+    }
+  }
+
+  lightOffButton(keyCode) {
+    const button = this.getButton(keyCode);
+    if (button) {
+      button.classList.remove('button_active');
+    }
+  }
 
   print(key) {
-    console.log(key);
+    console.log('print', key);
   }
 
-  isLetter(string) {
-    return string.length === 1 && !!string.match(/[a-zа-яё]/);
+  getButton(keyCode) {
+    let button = null;
+    for (const key in Object.values(this.keys)) {
+      if (this.keys[key].keyCode === keyCode) {
+        button = document.querySelector(`[data-id="${key}"]`);
+        break;
+      }
+    }
+
+    return button;
+  }
+
+  isLetter(key) {
+    return key.length === 1 && !!key.match(/[a-zа-яё]/);
+  }
+
+  isSpecial(key) {
+    return key.length > 1;
   }
 }
