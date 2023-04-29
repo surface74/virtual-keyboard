@@ -43,6 +43,52 @@ export default class KeySet {
       13: {
         keyRu: 'Backspace', keyRuShift: 'Backspace', keyEn: 'Backspace', keyEnShift: 'Backspace', code: 'Backspace', keyCode: 8,
       },
+
+      14: {
+        keyRu: 'Tab', keyRuShift: 'Tab', keyEn: 'Tab', keyEnShift: 'Tab', code: 'Tab', keyCode: 9,
+      },
+      15: {
+        keyRu: 'й', keyRuShift: 'Й', keyEn: 'q', keyEnShift: 'Q', code: 'KeyQ', keyCode: 81,
+      },
+      16: {
+        keyRu: 'ц', keyRuShift: 'Ц', keyEn: 'w', keyEnShift: 'W', code: 'KeyW', keyCode: 87,
+      },
+      17: {
+        keyRu: 'у', keyRuShift: 'У', keyEn: 'e', keyEnShift: 'E', code: 'KeyE', keyCode: 69,
+      },
+      18: {
+        keyRu: 'к', keyRuShift: 'К', keyEn: 'r', keyEnShift: 'R', code: 'KeyR', keyCode: 82,
+      },
+      19: {
+        keyRu: 'е', keyRuShift: 'Е', keyEn: 't', keyEnShift: 'T', code: 'KeyT', keyCode: 84,
+      },
+      20: {
+        keyRu: 'е', keyRuShift: 'Е', keyEn: 't', keyEnShift: 'T', code: 'KeyT', keyCode: 84,
+      },
+      21: {
+        keyRu: 'н', keyRuShift: 'Н', keyEn: 'y', keyEnShift: 'Y', code: 'KeyY', keyCode: 89,
+      },
+      22: {
+        keyRu: 'г', keyRuShift: 'Г', keyEn: 'u', keyEnShift: 'U', code: 'KeyU', keyCode: 85,
+      },
+      23: {
+        keyRu: 'ш', keyRuShift: 'Ш', keyEn: 'i', keyEnShift: 'I', code: 'KeyI', keyCode: 73,
+      },
+      24: {
+        keyRu: 'щ', keyRuShift: 'Щ', keyEn: 'o', keyEnShift: 'O', code: 'KeyO', keyCode: 79,
+      },
+      25: {
+        keyRu: 'з', keyRuShift: 'З', keyEn: 'p', keyEnShift: 'P', code: 'KeyP', keyCode: 80,
+      },
+      26: {
+        keyRu: 'х', keyRuShift: 'Х', keyEn: '[', keyEnShift: '{', code: 'BracketLeft', keyCode: 219,
+      },
+      27: {
+        keyRu: 'ъ', keyRuShift: 'Ъ', keyEn: ']', keyEnShift: '}', code: 'BracketRight', keyCode: 221,
+      },
+      28: {
+        keyRu: 'Del', keyRuShift: 'Del', keyEn: 'Del', keyEnShift: 'Del', code: 'Delete', keyCode: 46,
+      },
     };
   }
 }
