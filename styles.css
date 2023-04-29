@@ -462,6 +462,7 @@ img {
   font-size: 2rem;
   width: 5rem;
   height: 5rem;
+  outline-style: none;
   border: none;
   border-radius: 10px;
   background: #3b3b3b;

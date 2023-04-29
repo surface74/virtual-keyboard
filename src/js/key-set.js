@@ -93,6 +93,60 @@ export default class KeySet {
       29: {
         keyRu: 'CapsLock', keyRuShift: 'CapsLock', keyEn: 'CapsLock', keyEnShift: 'CapsLock', code: 'CapsLock', keyCode: 20,
       },
+      30: {
+        keyRu: 'ф', keyRuShift: 'Ф', keyEn: 'a', keyEnShift: 'A', code: 'KeyA', keyCode: 65,
+      },
+      31: {
+        keyRu: 'ы', keyRuShift: 'Ы', keyEn: 's', keyEnShift: 'S', code: 'KeyS', keyCode: 83,
+      },
+      32: {
+        keyRu: 'в', keyRuShift: 'В', keyEn: 'd', keyEnShift: 'D', code: 'KeyD', keyCode: 69,
+      },
+      33: {
+        keyRu: 'а', keyRuShift: 'А', keyEn: 'f', keyEnShift: 'F', code: 'KeyF', keyCode: 70,
+      },
+      34: {
+        keyRu: 'п', keyRuShift: 'П', keyEn: 'g', keyEnShift: 'G', code: 'KeyG', keyCode: 71,
+      },
+      35: {
+        keyRu: 'р', keyRuShift: 'Р', keyEn: 'h', keyEnShift: 'H', code: 'KeyH', keyCode: 72,
+      },
+      36: {
+        keyRu: 'о', keyRuShift: 'О', keyEn: 'j', keyEnShift: 'J', code: 'KeyJ', keyCode: 74,
+      },
+      37: {
+        keyRu: 'л', keyRuShift: 'Л', keyEn: 'k', keyEnShift: 'K', code: 'KeyK', keyCode: 75,
+      },
+      38: {
+        keyRu: 'д', keyRuShift: 'Д', keyEn: 'l', keyEnShift: 'L', code: 'KeyL', keyCode: 76,
+      },
+      39: {
+        keyRu: 'ж', keyRuShift: 'Ж', keyEn: ';', keyEnShift: ':', code: 'Semicolon', keyCode: 186,
+      },
+      40: {
+        keyRu: 'э', keyRuShift: 'Э', keyEn: '\'', keyEnShift: '"', code: 'Quote', keyCode: 222,
+      },
+      41: {
+        keyRu: 'Enter', keyRuShift: 'Enter', keyEn: 'Enter', keyEnShift: 'Enter', code: 'Enter', keyCode: 13,
+      },
+      42: {
+        keyRu: '', keyRuShift: '', keyEn: '', keyEnShift: '', code: 'Key', keyCode: 0,
+      },
+      43: {
+        keyRu: '', keyRuShift: '', keyEn: '', keyEnShift: '', code: 'Key', keyCode: 0,
+      },
+      44: {
+        keyRu: '', keyRuShift: '', keyEn: '', keyEnShift: '', code: 'Key', keyCode: 0,
+      },
+      45: {
+        keyRu: '', keyRuShift: '', keyEn: '', keyEnShift: '', code: 'Key', keyCode: 0,
+      },
+      46: {
+        keyRu: '', keyRuShift: '', keyEn: '', keyEnShift: '', code: 'Key', keyCode: 0,
+      },
+      47: {
+        keyRu: '', keyRuShift: '', keyEn: '', keyEnShift: '', code: 'Key', keyCode: 0,
+      },
     };
   }
 }

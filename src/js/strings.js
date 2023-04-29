@@ -6,7 +6,7 @@ export default class Strings {
         "tooltipHotKeys": "Для переключения языка комбинация: левый Ctrl + Alt"
       },
       "En": {
-        "tooltipOS": "Keyboard was created in OS %1%",
+        "tooltipOS": "Keyboard was created in OS %1",
         "tooltipHotKeys": "To switch locale press: left Ctrl + Alt"
       }
     }
