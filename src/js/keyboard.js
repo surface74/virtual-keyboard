@@ -50,20 +50,24 @@ export default class Keyboard {
     const sectionDisplay = this.createSectionDisplay();
     const sectionKeyboard = this.createSectionKeyboard();
     const footer = this.createFooter();
-    const script = this.helper.createElement({ tag: 'script', attr: { src: 'index.js', type: 'module' } });
 
-    document.body.append(element);
-    console.log('element: ', element);
+    main.append(sectionDisplay);
+    document.body.prepend(main);
   }
 
   createSectionDisplay() {
-    return null;
+    const section = this.helper.createElement({ tag: 'section', attr: { class: 'display-section wrapper' } });
+    const display = this.helper.createElement({ tag: 'textarea', attr: { class: 'display', cols: '30', rows: '10' } });
+    section.append(display);
+
+    return section;
   }
-  sectionKeyboard() {
+
+  createSectionKeyboard() {
     return null;
   }
 
-  sectionFooter() {
+  createFooter() {
     return null;
   }
 }
