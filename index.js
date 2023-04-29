@@ -5,4 +5,5 @@ const keySet = new KeySet();
 const keyboard = new Keyboard(keySet.keys);
 
 keyboard.init();
-// keyboard.refreshKeyboard();
+keyboard.refreshKeyboard();
+keyboard.refreshTooltips();

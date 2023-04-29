@@ -7,18 +7,15 @@ export default class Keyboard {
     this.LOCALE_RU = 'Ru';
     this.LOCALE_EN = 'En';
     this.keys = keys;
-    this.rows = document.querySelectorAll('.keyboard__row');
     this.locale = this.getLocale();
     this.shiftKeyPressed = false;
     this.helper = new HtmlHelper();
 
-    this.tooltipOS = document.querySelector('.tooltip.current-os');
-    this.tooltipHotKeys = document.querySelector('.tooltip.hot-keys');
-
   }
 
   refreshKeyboard() {
-    for (const row of this.rows) {
+    const rows = document.querySelectorAll('.keyboard__row');
+    for (const row of rows) {
       const buttons = row.querySelectorAll('.button');
       for (const button of buttons) {
         const buttonId = button.dataset.id;
@@ -28,13 +25,14 @@ export default class Keyboard {
         }
       }
     }
-    this.refreshTooltips();
   }
 
   refreshTooltips() {
     const os = this.strings[this.locale].tooltipOS;
-    this.tooltipOS.textContent = os.replace('%1%', navigator.userAgentData.platform);
-    this.tooltipHotKeys.textContent = this.strings[this.locale].tooltipHotKeys;
+    const tooltipOS = document.querySelector('.footer__tooltip.current-os');
+    const tooltipHotKeys = document.querySelector('.footer__tooltip.hot-keys');
+    tooltipOS.textContent = os.replace('%1', navigator.userAgentData.platform);
+    tooltipHotKeys.textContent = this.strings[this.locale].tooltipHotKeys;
   }
 
   getLocale() {
@@ -53,6 +51,8 @@ export default class Keyboard {
 
     main.append(sectionDisplay);
     main.append(sectionKeyboard);
+
+    document.body.prepend(footer);
     document.body.prepend(main);
   }
 
@@ -81,12 +81,12 @@ export default class Keyboard {
   createButtonsRow_1() {
     const row = this.createElement({ attr: { class: 'keyboard__row' } });
     for (let i = 0; i < 13; i++) {
-      const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}`} });
+      const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}` } });
       row.append(button);
     }
     const buttonBackspace = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special button_double', type: 'button' , 'data-id': '13'}
+      attr: { class: 'button button_special button_double', type: 'button', 'data-id': '13' }
     });
     row.append(buttonBackspace);
 
@@ -98,18 +98,18 @@ export default class Keyboard {
 
     const buttonTab = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button' , 'data-id': '14'}
+      attr: { class: 'button button_special', type: 'button', 'data-id': '14' }
     });
     row.append(buttonTab);
 
     for (let i = 15; i < 28; i++) {
-      const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}`} });
+      const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}` } });
       row.append(button);
     }
 
     const buttonDel = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button' , 'data-id': '28'}
+      attr: { class: 'button button_special', type: 'button', 'data-id': '28' }
     });
     row.append(buttonDel);
 
@@ -121,18 +121,18 @@ export default class Keyboard {
 
     const buttonCapsLock = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_double button_special', type: 'button' , 'data-id': '29'}
+      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '29' }
     });
     row.append(buttonCapsLock);
 
     for (let i = 30; i < 41; i++) {
-      const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}`} });
+      const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}` } });
       row.append(button);
     }
 
     const buttonEnter = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_double button_special', type: 'button' , 'data-id': '41'}
+      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '41' }
     });
     row.append(buttonEnter);
 
@@ -144,24 +144,24 @@ export default class Keyboard {
 
     const buttonLeftShift = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_double button_special', type: 'button' , 'data-id': '42'}
+      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '42' }
     });
     row.append(buttonLeftShift);
 
     for (let i = 43; i < 53; i++) {
-      const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}`} });
+      const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}` } });
       row.append(button);
     }
 
     const buttonArrowUp = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button' , 'data-id': '53'}
+      attr: { class: 'button button_special', type: 'button', 'data-id': '53' }
     });
     row.append(buttonArrowUp);
 
     const buttonRightShift = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_double button_special', type: 'button' , 'data-id': '54'}
+      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '54' }
     });
     row.append(buttonRightShift);
 
@@ -173,32 +173,32 @@ export default class Keyboard {
 
     const buttonCtrl = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button' , 'data-id': '55'}
+      attr: { class: 'button button_special', type: 'button', 'data-id': '55' }
     });
     row.append(buttonCtrl);
 
     const buttonWin = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button' , 'data-id': '56'}
+      attr: { class: 'button button_special', type: 'button', 'data-id': '56' }
     });
     row.append(buttonWin);
 
     const buttonLeftAlt = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button' , 'data-id': '57'}
+      attr: { class: 'button button_special', type: 'button', 'data-id': '57' }
     });
     row.append(buttonLeftAlt);
 
     const buttonSpace = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_space button_special', type: 'button' , 'data-id': '58'}
+      attr: { class: 'button button_space button_special', type: 'button', 'data-id': '58' }
     });
     row.append(buttonSpace);
 
     for (let i = 59; i < 64; i++) {
       const button = this.createElement({
-         tag: 'button', attr: { class: 'button button_special', type: 'button', 'data-id': `${i}`}
-        });
+        tag: 'button', attr: { class: 'button button_special', type: 'button', 'data-id': `${i}` }
+      });
       row.append(button);
     }
 
@@ -206,7 +206,11 @@ export default class Keyboard {
   }
 
   createFooter() {
-    return null;
+    const footer = this.createElement({ tag: 'footer', attr: { class: 'footer wrapper' } });
+    footer.append(this.createElement({ tag: 'p', attr: { class: 'footer__tooltip current-os' } }));
+    footer.append(this.createElement({ tag: 'p', attr: { class: 'footer__tooltip hot-keys' } }));
+
+    return footer;
   }
 
   createElement(elementInfo) {
