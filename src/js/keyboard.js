@@ -248,8 +248,17 @@ export default class Keyboard {
 
   onKeydown(e) {
     e.preventDefault();
+    if (e.code === 'AltLeft' && e.ctrlKey ||
+      e.code === 'ControlLeft' && e.altKey) {
+      this.toggleLocale();
+      this.refreshKeyboard();
+    }
     if (e.code !== 'CapsLock') {
       this.lightOnButton(e.keyCode, e.code);
+      // if (e.code.startsWith('Shift')) {
+      //   this.shiftKeyPressed = true;
+      //   this.refreshKeyboard();
+      // }
     } else {
       this.capsLockPressed = this.lightToggleButton(e.keyCode, e.code);
       this.refreshKeyboard();
@@ -262,6 +271,11 @@ export default class Keyboard {
       this.lightOffButton(e.keyCode, e.code);
       this.print(e.key);
     }
+  }
+
+  toggleLocale() {
+    this.locale =  (this.locale === this.locales[0]) ? this.locales[1] : this.locales[0];
+    this.saveLocale(this.locale);
   }
 
   lightToggleButton(keyCode, code) {
