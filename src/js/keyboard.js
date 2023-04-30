@@ -1,5 +1,6 @@
 import Strings from './strings.js';
 import HtmlHelper from './html-helper.js';
+import OsSensetiveCodes from './os-sensetive-codes.js';
 
 export default class Keyboard {
   constructor(keys) {
@@ -11,7 +12,8 @@ export default class Keyboard {
     this.shiftKeyPressed = false;
     this.capsLockPressed = false;
     this.helper = new HtmlHelper();
-
+    this.osSensetives = new OsSensetiveCodes();
+    this.platform = 'Mac'; //navigator.userAgentData.platform;
   }
 
   refreshKeyboard() {
@@ -26,6 +28,12 @@ export default class Keyboard {
           if (this.capsLockPressed && this.isLetter(buttonCaption)) {
             buttonCaption = buttonCaption.toUpperCase();
           }
+          if (this.osSensetives.isOsSensetive(buttonCaption)) {
+            buttonCaption = (this.platform === 'Windows')
+            ? this.osSensetives.keys[buttonCaption].windows
+            : this.osSensetives.keys[buttonCaption].other;
+          }
+
           button.textContent = buttonCaption;
         }
       }
@@ -36,7 +44,7 @@ export default class Keyboard {
     const os = this.strings[this.locale].tooltipOS;
     const tooltipOS = document.querySelector('.footer__tooltip.current-os');
     const tooltipHotKeys = document.querySelector('.footer__tooltip.hot-keys');
-    tooltipOS.textContent = os.replace('%1', navigator.userAgentData.platform);
+    tooltipOS.textContent = os.replace('%1', this.platform);
     tooltipHotKeys.textContent = this.strings[this.locale].tooltipHotKeys;
   }
 
