@@ -9,7 +9,8 @@ export default class Keyboard {
     this.keys = keys;
     this.locales = new Locales().getLocales();
     this.locale = this.getLocale();
-    this.shiftKeyPressed = false;
+    this.shiftLeftPressed = false;
+    this.shiftRightPressed = false;
     this.capsLockPressed = false;
     this.helper = new HtmlHelper();
     this.osSensetives = new OsSensetiveCodes();
@@ -22,7 +23,7 @@ export default class Keyboard {
       const buttons = row.querySelectorAll('.button');
       for (const button of buttons) {
         const buttonId = button.dataset.id;
-        const captionSource = `key${this.locale}${this.shiftKeyPressed ? 'Shift' : ''}`;
+        const captionSource = `key${this.locale}${this.isShiftPressed() ? 'Shift' : ''}`;
         if (buttonId in this.keys && captionSource in this.keys[buttonId]) {
           let buttonCaption = this.keys[buttonId][captionSource] || '';
           if (this.capsLockPressed && this.isLetter(buttonCaption)) {
@@ -38,6 +39,10 @@ export default class Keyboard {
         }
       }
     }
+  }
+
+  isShiftPressed() {
+    return this.shiftLeftPressed || this.shiftRightPressed;
   }
 
   refreshTooltips() {
@@ -252,29 +257,54 @@ export default class Keyboard {
       e.code === 'ControlLeft' && e.altKey) {
       this.toggleLocale();
       this.refreshKeyboard();
-    }
-    if (e.code !== 'CapsLock') {
       this.lightOnButton(e.keyCode, e.code);
-      // if (e.code.startsWith('Shift')) {
-      //   this.shiftKeyPressed = true;
-      //   this.refreshKeyboard();
-      // }
-    } else {
+      return;
+    }
+
+    if (e.code === 'CapsLock') {
       this.capsLockPressed = this.lightToggleButton(e.keyCode, e.code);
       this.refreshKeyboard();
+      return;
     }
+
+    if (e.code.startsWith('Shift')) {
+      if (e.code === 'ShiftLeft') {
+        this.shiftLeftPressed = true;
+      } else {
+        this.shiftRightPressed = true;
+      };
+
+      this.lightOnButton(e.keyCode, e.code);
+      this.refreshKeyboard();
+      return;
+    }
+
+    this.lightOnButton(e.keyCode, e.code);
     this.print(e.key);
   }
 
   onKeyup(e) {
+    if (e.code.startsWith('Shift')) {
+      console.log('KeyUp: ', e.code);
+
+      if (e.code === 'ShiftLeft') {
+        this.shiftLeftPressed = false;
+      } else {
+        this.shiftRightPressed = false;
+      };
+
+      this.lightOffButton(e.keyCode, e.code);
+      this.refreshKeyboard();
+      return;
+    }
+
     if (e.code !== 'CapsLock') {
       this.lightOffButton(e.keyCode, e.code);
-      this.print(e.key);
     }
   }
 
   toggleLocale() {
-    this.locale =  (this.locale === this.locales[0]) ? this.locales[1] : this.locales[0];
+    this.locale = (this.locale === this.locales[0]) ? this.locales[1] : this.locales[0];
     this.saveLocale(this.locale);
   }
 
