@@ -1,19 +1,19 @@
 import Strings from './strings.js';
 import HtmlHelper from './html-helper.js';
 import OsSensetiveCodes from './os-sensetive-codes.js';
+import Locales from './locales.js';
 
 export default class Keyboard {
   constructor(keys) {
     this.strings = new Strings().strings;
-    this.LOCALE_RU = 'Ru';
-    this.LOCALE_EN = 'En';
     this.keys = keys;
+    this.locales = new Locales().getLocales();
     this.locale = this.getLocale();
     this.shiftKeyPressed = false;
     this.capsLockPressed = false;
     this.helper = new HtmlHelper();
     this.osSensetives = new OsSensetiveCodes();
-    this.platform = 'Mac'; //navigator.userAgentData.platform;
+    this.platform = navigator.userAgentData.platform;
   }
 
   refreshKeyboard() {
@@ -30,8 +30,8 @@ export default class Keyboard {
           }
           if (this.osSensetives.isOsSensetive(buttonCaption)) {
             buttonCaption = (this.platform === 'Windows')
-            ? this.osSensetives.keys[buttonCaption].windows
-            : this.osSensetives.keys[buttonCaption].other;
+              ? this.osSensetives.keys[buttonCaption].windows
+              : this.osSensetives.keys[buttonCaption].other;
           }
 
           button.textContent = buttonCaption;
@@ -49,11 +49,17 @@ export default class Keyboard {
   }
 
   getLocale() {
-    return this.LOCALE_EN;
+    let locale = localStorage.getItem('locale');
+    if (!this.locales.includes(locale)) {
+      locale = this.locales[0];
+      this.saveLocale(locale);
+    }
+
+    return locale;
   }
 
-  saveLocale() {
-    throw new Error('Not implemented!');
+  saveLocale(locale) {
+    localStorage.setItem('locale', locale);
   }
 
   init() {
