@@ -235,9 +235,9 @@ export default class Keyboard {
   onKeydown(e) {
     e.preventDefault();
     if (e.code !== 'CapsLock') {
-      this.lightOnButton(e.keyCode);
+      this.lightOnButton(e.keyCode, e.code);
     } else {
-      this.capsLockPressed = this.lightToggleButton(e.keyCode);
+      this.capsLockPressed = this.lightToggleButton(e.keyCode, e.code);
       this.refreshKeyboard();
     }
     this.print(e.key);
@@ -245,27 +245,27 @@ export default class Keyboard {
 
   onKeyup(e) {
     if (e.code !== 'CapsLock') {
-      this.lightOffButton(e.keyCode);
+      this.lightOffButton(e.keyCode, e.code);
       this.print(e.key);
     }
   }
 
-  lightToggleButton(keyCode) {
-    const button = this.getButton(keyCode);
+  lightToggleButton(keyCode, code) {
+    const button = this.getButton(keyCode, code);
     if (button) {
       return button.classList.toggle('button_active');
     }
   }
 
-  lightOnButton(keyCode) {
-    const button = this.getButton(keyCode);
+  lightOnButton(keyCode, code) {
+    const button = this.getButton(keyCode, code);
     if (button) {
       button.classList.add('button_active');
     }
   }
 
-  lightOffButton(keyCode) {
-    const button = this.getButton(keyCode);
+  lightOffButton(keyCode, code) {
+    const button = this.getButton(keyCode, code);
     if (button) {
       button.classList.remove('button_active');
     }
@@ -275,10 +275,10 @@ export default class Keyboard {
     console.log('print', key);
   }
 
-  getButton(keyCode) {
+  getButton(keyCode, code) {
     let button = null;
     for (const key in Object.values(this.keys)) {
-      if (this.keys[key].keyCode === keyCode) {
+      if (this.keys[key].keyCode === keyCode && this.keys[key].code === code) {
         button = document.querySelector(`[data-id="${key}"]`);
         break;
       }
