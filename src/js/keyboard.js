@@ -23,14 +23,14 @@ export default class Keyboard {
 
   refreshKeyboard() {
     const rows = document.querySelectorAll('.keyboard__row');
-    for (const row of rows) {
-      const buttons = row.querySelectorAll('.button');
-      for (const button of buttons) {
-        const buttonId = button.dataset.id;
+    for (let i = 0; i < rows.length; i += 1) {
+      const buttons = Array.from(rows[i].querySelectorAll('.button'));
+      for (let j = 0; j < buttons.length; j += 1) {
+        const buttonId = buttons[j].dataset.id;
         const captionSource = `key${this.currentLocale}${this.isShiftPressed() ? 'Shift' : ''}`;
         if (buttonId in this.keys && captionSource in this.keys[buttonId]) {
           let buttonCaption = this.keys[buttonId][captionSource] || '';
-          if (this.capsLockPressed && this.isLetter(buttonCaption)) {
+          if (this.capsLockPressed && Keyboard.isLetter(buttonCaption)) {
             buttonCaption = buttonCaption.toUpperCase();
           }
           if (this.osSensetives.isOsSensetive(buttonCaption)) {
@@ -39,7 +39,7 @@ export default class Keyboard {
               : this.osSensetives.codes[buttonCaption].other;
           }
 
-          button.textContent = buttonCaption;
+          buttons[j].textContent = buttonCaption;
         }
       }
     }
@@ -61,14 +61,14 @@ export default class Keyboard {
   getLocale() {
     let locale = localStorage.getItem('locale');
     if (!this.locales.includes(locale)) {
-      locale = this.locales[0];
-      this.saveLocale(locale);
+      [locale] = this.locales;
+      Keyboard.saveLocale(locale);
     }
 
     return locale;
   }
 
-  saveLocale(locale) {
+  static saveLocale(locale) {
     localStorage.setItem('locale', locale);
   }
 
@@ -105,7 +105,9 @@ export default class Keyboard {
     const section = this.createElement({ tag: 'section', attr: { class: 'display-section wrapper' } });
     const display = this.createElement({
       tag: 'textarea',
-      attr: { class: 'display', cols: '30', rows: '10', autofocus: true }
+      attr: {
+        class: 'display', cols: '30', rows: '10', autofocus: true,
+      },
     });
     section.append(display);
 
@@ -128,13 +130,13 @@ export default class Keyboard {
 
   createButtonsRow_1() {
     const row = this.createElement({ attr: { class: 'keyboard__row' } });
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 13; i += 1) {
       const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}` } });
       row.append(button);
     }
     const buttonBackspace = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special button_double', type: 'button', 'data-id': '13' }
+      attr: { class: 'button button_special button_double', type: 'button', 'data-id': '13' },
     });
     row.append(buttonBackspace);
 
@@ -146,18 +148,18 @@ export default class Keyboard {
 
     const buttonTab = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button', 'data-id': '14' }
+      attr: { class: 'button button_special', type: 'button', 'data-id': '14' },
     });
     row.append(buttonTab);
 
-    for (let i = 15; i < 28; i++) {
+    for (let i = 15; i < 28; i += 1) {
       const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}` } });
       row.append(button);
     }
 
     const buttonDel = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button', 'data-id': '28' }
+      attr: { class: 'button button_special', type: 'button', 'data-id': '28' },
     });
     row.append(buttonDel);
 
@@ -169,18 +171,18 @@ export default class Keyboard {
 
     const buttonCapsLock = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '29' }
+      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '29' },
     });
     row.append(buttonCapsLock);
 
-    for (let i = 30; i < 41; i++) {
+    for (let i = 30; i < 41; i += 1) {
       const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}` } });
       row.append(button);
     }
 
     const buttonEnter = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '41' }
+      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '41' },
     });
     row.append(buttonEnter);
 
@@ -192,24 +194,24 @@ export default class Keyboard {
 
     const buttonLeftShift = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '42' }
+      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '42' },
     });
     row.append(buttonLeftShift);
 
-    for (let i = 43; i < 53; i++) {
+    for (let i = 43; i < 53; i += 1) {
       const button = this.createElement({ tag: 'button', attr: { class: 'button', type: 'button', 'data-id': `${i}` } });
       row.append(button);
     }
 
     const buttonArrowUp = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button', 'data-id': '53' }
+      attr: { class: 'button button_special', type: 'button', 'data-id': '53' },
     });
     row.append(buttonArrowUp);
 
     const buttonRightShift = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '54' }
+      attr: { class: 'button button_double button_special', type: 'button', 'data-id': '54' },
     });
     row.append(buttonRightShift);
 
@@ -221,31 +223,31 @@ export default class Keyboard {
 
     const buttonCtrl = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button', 'data-id': '55' }
+      attr: { class: 'button button_special', type: 'button', 'data-id': '55' },
     });
     row.append(buttonCtrl);
 
     const buttonWin = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button', 'data-id': '56' }
+      attr: { class: 'button button_special', type: 'button', 'data-id': '56' },
     });
     row.append(buttonWin);
 
     const buttonLeftAlt = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_special', type: 'button', 'data-id': '57' }
+      attr: { class: 'button button_special', type: 'button', 'data-id': '57' },
     });
     row.append(buttonLeftAlt);
 
     const buttonSpace = this.createElement({
       tag: 'button',
-      attr: { class: 'button button_space button_special', type: 'button', 'data-id': '58' }
+      attr: { class: 'button button_space button_special', type: 'button', 'data-id': '58' },
     });
     row.append(buttonSpace);
 
-    for (let i = 59; i < 64; i++) {
+    for (let i = 59; i < 64; i += 1) {
       const button = this.createElement({
-        tag: 'button', attr: { class: 'button button_special', type: 'button', 'data-id': `${i}` }
+        tag: 'button', attr: { class: 'button button_special', type: 'button', 'data-id': `${i}` },
       });
       row.append(button);
     }
@@ -266,20 +268,20 @@ export default class Keyboard {
   }
 
   onClick(e) {
-    //check if Shift didn't pressed, but some Shift-buttons highlighted
+    // check if Shift didn't pressed, but some Shift-buttons highlighted
     if (!e.shiftKey && this.isShiftPressed()) {
       if (this.shiftLeftPressed) {
-        this.shiftLeftPressed = this.lightToggleButton('ShiftLeft')
+        this.shiftLeftPressed = this.lightToggleButton('ShiftLeft');
       }
       if (this.shiftRightPressed) {
-        this.shiftRightPressed = this.lightToggleButton('ShiftRight')
+        this.shiftRightPressed = this.lightToggleButton('ShiftRight');
       }
       this.refreshKeyboard();
     }
   }
 
   onPointerout(e) {
-    const target = e.target;
+    const { target } = e;
     if (!target.classList.contains('button')) {
       return;
     }
@@ -296,7 +298,7 @@ export default class Keyboard {
       return;
     }
     const buttonId = e.target.dataset.id;
-    const code = this.keys[buttonId].code;
+    const { code } = this.keys[buttonId];
 
     if (code === 'CapsLock') {
       this.capsLockPressed = this.lightToggleButton(code);
@@ -309,7 +311,7 @@ export default class Keyboard {
         this.shiftLeftPressed = this.lightToggleButton(code);
       } else {
         this.shiftRightPressed = this.lightToggleButton(code);
-      };
+      }
 
       this.refreshKeyboard();
       return;
@@ -328,7 +330,7 @@ export default class Keyboard {
     if (!e.target.classList.contains('button')) {
       return;
     }
-    const code = this.keys[e.target.dataset.id].code;
+    const { code } = this.keys[e.target.dataset.id];
 
     if (code !== 'CapsLock' && !code.startsWith('Shift')) {
       this.lightOffButton(code);
@@ -338,8 +340,8 @@ export default class Keyboard {
   onKeydown(e) {
     e.preventDefault();
     this.display.focus();
-    if (e.code === 'AltLeft' && e.ctrlKey ||
-      e.code === 'ControlLeft' && e.altKey) {
+    if ((e.code === 'AltLeft' && e.ctrlKey)
+      || (e.code === 'ControlLeft' && e.altKey)) {
       this.toggleLocale();
       this.refreshKeyboard();
       this.lightOnButton(e.code);
@@ -357,7 +359,7 @@ export default class Keyboard {
         this.shiftLeftPressed = true;
       } else {
         this.shiftRightPressed = true;
-      };
+      }
 
       this.lightOnButton(e.code);
       this.refreshKeyboard();
@@ -372,12 +374,11 @@ export default class Keyboard {
 
   onKeyup(e) {
     if (e.code.startsWith('Shift')) {
-
       if (e.code === 'ShiftLeft') {
         this.shiftLeftPressed = false;
       } else {
         this.shiftRightPressed = false;
-      };
+      }
 
       this.lightOffButton(e.code);
 
@@ -395,16 +396,16 @@ export default class Keyboard {
   }
 
   toggleLocale() {
-    this.currentLocale = (this.currentLocale === this.locales[0]) ? this.locales[1] : this.locales[0];
-    this.saveLocale(this.currentLocale);
+    this.currentLocale = (this.currentLocale === this.locales[0])
+      ? this.locales[1]
+      : this.locales[0];
+
+    Keyboard.saveLocale(this.currentLocale);
     this.refreshTooltips();
   }
 
   lightToggleButton(code) {
-    const button = this.getButton(code);
-    if (button) {
-      return button.classList.toggle('button_active');
-    }
+    return this.getButton(code).classList.toggle('button_active');
   }
 
   lightOnButton(code) {
@@ -447,40 +448,45 @@ export default class Keyboard {
   }
 
   backspaceLetter() {
-    let value = this.display.value;
+    const { value } = this.display;
     if (!value.length || !this.display.selectionStart) {
       return;
     }
     const startPart = value.slice(0, this.display.selectionStart - 1);
     const endPart = value.slice(this.display.selectionStart);
     this.display.value = `${startPart}${endPart}`;
-    this.display.selectionStart = this.display.selectionEnd = startPart.length;
+    this.display.selectionStart = startPart.length;
+    this.display.selectionEnd = startPart.length;
   }
 
   deleteLetter() {
-    let value = this.display.value;
+    const { value } = this.display;
     if (!value.length || value.length === this.display.selectionStart) {
       return;
     }
     const startPart = value.slice(0, this.display.selectionStart);
     const endPart = value.slice(this.display.selectionStart + 1);
     this.display.value = `${startPart}${endPart}`;
-    this.display.selectionStart = this.display.selectionEnd = startPart.length;
+    this.display.selectionStart = startPart.length;
+    this.display.selectionEnd = startPart.length;
   }
 
   printLetter(input) {
-    let value = this.display.value;
+    const { value } = this.display;
     const startPart = value.slice(0, this.display.selectionStart);
     const endPart = value.slice(this.display.selectionStart);
     this.display.value = `${startPart}${input}${endPart}`;
-    this.display.selectionStart = this.display.selectionEnd = `${startPart}${input}`.length;
+    this.display.selectionStart = `${startPart}${input}`.length;
+    this.display.selectionEnd = this.display.selectionStart;
   }
 
   getButton(code) {
     let button = null;
-    for (const key in Object.values(this.keys)) {
-      if (this.keys[key].code === code) {
-        button = document.querySelector(`[data-id="${key}"]`);
+    const keys = Array.from(Object.values(this.keys));
+
+    for (let i = 0; i < keys.length; i += 1) {
+      if (this.keys[i].code === code) {
+        button = document.querySelector(`[data-id="${i}"]`);
         break;
       }
     }
@@ -488,11 +494,7 @@ export default class Keyboard {
     return button;
   }
 
-  isLetter(key) {
+  static isLetter(key) {
     return key.length === 1 && !!key.match(/[a-zа-яё]/);
-  }
-
-  isSpecial(key) {
-    return key.length > 1;
   }
 }
