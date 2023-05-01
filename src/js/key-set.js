@@ -177,7 +177,7 @@ export default class KeySet {
         keyRu: 'Alt', keyRuShift: 'Alt', keyEn: 'Alt', keyEnShift: 'Alt', code: 'AltLeft', keyCode: 18,
       },
       58: {
-        keyRu: '', keyRuShift: '', keyEn: '', keyEnShift: '', code: 'Space', keyCode: 32,
+        keyRu: ' ', keyRuShift: ' ', keyEn: ' ', keyEnShift: ' ', code: 'Space', keyCode: 32,
       },
       59: {
         keyRu: 'Alt', keyRuShift: 'Alt', keyEn: 'Alt', keyEnShift: 'Alt', code: 'AltRight', keyCode: 18,
