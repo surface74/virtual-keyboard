@@ -16,6 +16,7 @@ export default class Keyboard {
     this.osSensetives = new OsSensetiveCodes();
     this.platform = navigator.userAgentData.platform;
     this.ignoredForPrint = ['Alt', 'Ctrl', 'CapsLock', 'Shift', 'Win', 'Cmd'];
+    this.lastClickedButtonId = null;
   }
 
   refreshKeyboard() {
@@ -90,6 +91,7 @@ export default class Keyboard {
     document.addEventListener('keyup', this.onKeyup.bind(this));
     this.keyboard.addEventListener('pointerdown', this.onPointerdown.bind(this));
     this.keyboard.addEventListener('pointerup', this.onPointerup.bind(this));
+    this.keyboard.addEventListener('pointerout', this.onPointerout.bind(this));
   }
 
   createSectionDisplay() {
@@ -256,11 +258,24 @@ export default class Keyboard {
     return this.helper.createElement(elementInfo);
   }
 
+  onPointerout(e) {
+    const target = e.target;
+    if (!target.classList.contains('button')) {
+      return;
+    }
+    // const code = this.keys[target.dataset.id].code;
+    if (this.lastClickedButtonId === target.dataset.id) {
+      this.lastClickedButtonId = null;
+      this.lightOffButton(this.keys[target.dataset.id].code);
+    }
+  }
+
   onPointerdown(e) {
     if (!e.target.classList.contains('button')) {
       return;
     }
-    const code = this.keys[e.target.dataset.id].code;
+    const buttonId = e.target.dataset.id;
+    const code = this.keys[buttonId].code;
 
     if (code === 'CapsLock') {
       this.capsLockPressed = this.lightToggleButton(code);
@@ -278,6 +293,8 @@ export default class Keyboard {
       this.refreshKeyboard();
       return;
     }
+
+    this.lastClickedButtonId = buttonId;
 
     const caption = this.lightOnButton(code)?.textContent || '';
     if (caption) {
