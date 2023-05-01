@@ -1,10 +1,14 @@
 export default class OsSensetiveCodes {
-  get codes() {
-    return {
-      'Meta': { windows: 'Win', other: 'Cmd' },
-      'Enter': { windows: 'Enter', other: 'Return' },
-      'Alt': { windows: 'Alt', other: 'Opt' }
+  constructor() {
+    this.codes = {
+      Meta: { windows: 'Win', other: 'Cmd' },
+      Enter: { windows: 'Enter', other: 'Return' },
+      Alt: { windows: 'Alt', other: 'Opt' },
     };
+  }
+
+  getCodes() {
+    return this.codes;
   }
 
   isOsSensetive(code) {

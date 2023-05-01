@@ -1,6 +1,6 @@
 export default class KeySet {
-  getKeys() {
-    return {
+  constructor() {
+    this.keys = {
       0: {
         keyRu: 'ё', keyRuShift: 'Ё', keyEn: '`', keyEnShift: '~', code: 'Backquote',
       },
@@ -195,5 +195,9 @@ export default class KeySet {
         keyRu: 'Ctrl', keyRuShift: 'Ctrl', keyEn: 'Ctrl', keyEnShift: 'Ctrl', code: 'ControlRight',
       },
     };
+  }
+
+  getKeys() {
+    return this.keys;
   }
 }
