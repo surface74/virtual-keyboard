@@ -92,6 +92,7 @@ export default class Keyboard {
     this.keyboard.addEventListener('pointerdown', this.onPointerdown.bind(this));
     this.keyboard.addEventListener('pointerup', this.onPointerup.bind(this));
     this.keyboard.addEventListener('pointerout', this.onPointerout.bind(this));
+    this.display.addEventListener('click', this.onClick.bind(this));
   }
 
   createSectionDisplay() {
@@ -258,15 +259,29 @@ export default class Keyboard {
     return this.helper.createElement(elementInfo);
   }
 
+  onClick(e) {
+    //check if Shift didn't pressed, but some Shift-buttons highlighted
+    if (!e.shiftKey && this.isShiftPressed()) {
+      if (this.shiftLeftPressed) {
+        this.shiftLeftPressed = this.lightToggleButton('ShiftLeft')
+      }
+      if (this.shiftRightPressed) {
+        this.shiftRightPressed = this.lightToggleButton('ShiftRight')
+      }
+      this.refreshKeyboard();
+    }
+  }
+
   onPointerout(e) {
     const target = e.target;
     if (!target.classList.contains('button')) {
       return;
     }
-    // const code = this.keys[target.dataset.id].code;
-    if (this.lastClickedButtonId === target.dataset.id) {
+
+    const buttonId = target.dataset.id;
+    if (this.lastClickedButtonId === buttonId) {
       this.lastClickedButtonId = null;
-      this.lightOffButton(this.keys[target.dataset.id].code);
+      this.lightOffButton(this.keys[buttonId].code);
     }
   }
 
@@ -310,6 +325,7 @@ export default class Keyboard {
     const code = this.keys[e.target.dataset.id].code;
 
     if (code !== 'CapsLock' && !code.startsWith('Shift')) {
+      console.log('Off');
       this.lightOffButton(code);
     }
   }
@@ -351,7 +367,6 @@ export default class Keyboard {
 
   onKeyup(e) {
     if (e.code.startsWith('Shift')) {
-      console.log('KeyUp: ', e.code);
 
       if (e.code === 'ShiftLeft') {
         this.shiftLeftPressed = false;
@@ -360,6 +375,11 @@ export default class Keyboard {
       };
 
       this.lightOffButton(e.code);
+
+      if (this.isShiftPressed()) {
+        this.display.click();
+      }
+
       this.refreshKeyboard();
       return;
     }
@@ -372,6 +392,7 @@ export default class Keyboard {
   toggleLocale() {
     this.locale = (this.locale === this.locales[0]) ? this.locales[1] : this.locales[0];
     this.saveLocale(this.locale);
+    this.refreshTooltips();
   }
 
   lightToggleButton(code) {
