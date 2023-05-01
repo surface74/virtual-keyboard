@@ -261,12 +261,12 @@ export default class Keyboard {
       e.code === 'ControlLeft' && e.altKey) {
       this.toggleLocale();
       this.refreshKeyboard();
-      this.lightOnButton(e.keyCode, e.code);
+      this.lightOnButton(e.code);
       return;
     }
 
     if (e.code === 'CapsLock') {
-      this.capsLockPressed = this.lightToggleButton(e.keyCode, e.code);
+      this.capsLockPressed = this.lightToggleButton(e.code);
       this.refreshKeyboard();
       return;
     }
@@ -278,12 +278,12 @@ export default class Keyboard {
         this.shiftRightPressed = true;
       };
 
-      this.lightOnButton(e.keyCode, e.code);
+      this.lightOnButton(e.code);
       this.refreshKeyboard();
       return;
     }
 
-    const caption = this.lightOnButton(e.keyCode, e.code)?.textContent || '';
+    const caption = this.lightOnButton(e.code)?.textContent || '';
     if (caption) {
       this.processOutput(caption);
     }
@@ -299,13 +299,13 @@ export default class Keyboard {
         this.shiftRightPressed = false;
       };
 
-      this.lightOffButton(e.keyCode, e.code);
+      this.lightOffButton(e.code);
       this.refreshKeyboard();
       return;
     }
 
     if (e.code !== 'CapsLock') {
-      this.lightOffButton(e.keyCode, e.code);
+      this.lightOffButton(e.code);
     }
   }
 
@@ -314,15 +314,15 @@ export default class Keyboard {
     this.saveLocale(this.locale);
   }
 
-  lightToggleButton(keyCode, code) {
-    const button = this.getButton(keyCode, code);
+  lightToggleButton(code) {
+    const button = this.getButton(code);
     if (button) {
       return button.classList.toggle('button_active');
     }
   }
 
-  lightOnButton(keyCode, code) {
-    const button = this.getButton(keyCode, code);
+  lightOnButton(code) {
+    const button = this.getButton(code);
     if (button) {
       button.classList.add('button_active');
     }
@@ -330,8 +330,8 @@ export default class Keyboard {
     return button;
   }
 
-  lightOffButton(keyCode, code) {
-    const button = this.getButton(keyCode, code);
+  lightOffButton(code) {
+    const button = this.getButton(code);
     if (button) {
       button.classList.remove('button_active');
     }
@@ -391,10 +391,10 @@ export default class Keyboard {
     this.display.selectionStart = this.display.selectionEnd = `${startPart}${input}`.length;
   }
 
-  getButton(keyCode, code) {
+  getButton(code) {
     let button = null;
     for (const key in Object.values(this.keys)) {
-      if (this.keys[key].keyCode === keyCode && this.keys[key].code === code) {
+      if (this.keys[key].code === code) {
         button = document.querySelector(`[data-id="${key}"]`);
         break;
       }
