@@ -15,6 +15,7 @@ export default class Keyboard {
     this.helper = new HtmlHelper();
     this.osSensetives = new OsSensetiveCodes();
     this.platform = navigator.userAgentData.platform;
+    this.ignoredForPrint = ['Alt', 'Ctrl', 'CapsLock', 'Shift', 'Win', 'Cmd'];
   }
 
   refreshKeyboard() {
@@ -80,7 +81,15 @@ export default class Keyboard {
     document.body.prepend(main);
 
     this.display = document.querySelector('.display');
+    this.keyboard = document.querySelector('.keyboard');
     this.addEventListeners();
+  }
+
+  addEventListeners() {
+    document.addEventListener('keydown', this.onKeydown.bind(this));
+    document.addEventListener('keyup', this.onKeyup.bind(this));
+    this.keyboard.addEventListener('pointerdown', this.onPointerdown.bind(this));
+    this.keyboard.addEventListener('pointerup', this.onPointerup.bind(this));
   }
 
   createSectionDisplay() {
@@ -247,12 +256,46 @@ export default class Keyboard {
     return this.helper.createElement(elementInfo);
   }
 
-  addEventListeners() {
-    document.addEventListener('keydown', this.onKeydown.bind(this));
-    document.addEventListener('keyup', this.onKeyup.bind(this));
-    // this.keyboard.addEventListener('pointerdown', this.onPointerdown);
+  onPointerdown(e) {
+    if (!e.target.classList.contains('button')) {
+      return;
+    }
+    const code = this.keys[e.target.dataset.id].code;
+
+    if (code === 'CapsLock') {
+      this.capsLockPressed = this.lightToggleButton(code);
+      this.refreshKeyboard();
+      return;
+    }
+
+    if (code.startsWith('Shift')) {
+      if (code === 'ShiftLeft') {
+        this.shiftLeftPressed = this.lightToggleButton(code);
+      } else {
+        this.shiftRightPressed = this.lightToggleButton(code);
+      };
+
+      this.refreshKeyboard();
+      return;
+    }
+
+    const caption = this.lightOnButton(code)?.textContent || '';
+    if (caption) {
+      this.processOutput(caption);
+    }
   }
 
+  onPointerup(e) {
+    this.display.focus();
+    if (!e.target.classList.contains('button')) {
+      return;
+    }
+    const code = this.keys[e.target.dataset.id].code;
+
+    if (code !== 'CapsLock' && !code.startsWith('Shift')) {
+      this.lightOffButton(code);
+    }
+  }
 
   onKeydown(e) {
     e.preventDefault();
@@ -338,8 +381,7 @@ export default class Keyboard {
   }
 
   processOutput(keyCaption) {
-    const ignoredForPrint = ['Alt', 'Ctrl', 'CapsLock', 'Shift', 'Meta'];
-    if (ignoredForPrint.includes(keyCaption)) {
+    if (this.ignoredForPrint.includes(keyCaption)) {
       return;
     }
 
