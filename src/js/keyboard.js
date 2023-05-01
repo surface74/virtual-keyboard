@@ -285,7 +285,7 @@ export default class Keyboard {
 
     const caption = this.lightOnButton(e.keyCode, e.code)?.textContent || '';
     if (caption) {
-      this.print(caption);
+      this.processOutput(caption);
     }
   }
 
@@ -337,10 +337,56 @@ export default class Keyboard {
     }
   }
 
-  print(input) {
+  processOutput(keyCaption) {
+    const ignoredForPrint = ['Alt', 'Ctrl', 'CapsLock', 'Shift', 'Meta'];
+    if (ignoredForPrint.includes(keyCaption)) {
+      return;
+    }
+
+    switch (keyCaption) {
+      case 'Tab':
+        this.printLetter('  ');
+        break;
+      case 'Enter':
+        this.printLetter('\n');
+        break;
+      case 'Del':
+        this.deleteLetter();
+        break;
+      case 'Backspace':
+        this.backspaceLetter();
+        break;
+      default:
+        this.printLetter(keyCaption);
+    }
+  }
+
+  backspaceLetter() {
+    let value = this.display.value;
+    if (!value.length || !this.display.selectionStart) {
+      return;
+    }
+    const startPart = value.slice(0, this.display.selectionStart - 1);
+    const endPart = value.slice(this.display.selectionStart);
+    this.display.value = `${startPart}${endPart}`;
+    this.display.selectionStart = this.display.selectionEnd = startPart.length;
+  }
+
+  deleteLetter() {
+    let value = this.display.value;
+    if (!value.length || value.length === this.display.selectionStart) {
+      return;
+    }
+    const startPart = value.slice(0, this.display.selectionStart);
+    const endPart = value.slice(this.display.selectionStart + 1);
+    this.display.value = `${startPart}${endPart}`;
+    this.display.selectionStart = this.display.selectionEnd = startPart.length;
+  }
+
+  printLetter(input) {
     let value = this.display.value;
     const startPart = value.slice(0, this.display.selectionStart);
-    const endPart  = value.slice(this.display.selectionStart);
+    const endPart = value.slice(this.display.selectionStart);
     this.display.value = `${startPart}${input}${endPart}`;
     this.display.selectionStart = this.display.selectionEnd = `${startPart}${input}`.length;
   }
