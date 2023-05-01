@@ -1,198 +1,198 @@
 export default class KeySet {
-  get keys() {
+  getKeys() {
     return {
       0: {
-        keyRu: 'ё', keyRuShift: 'Ё', keyEn: '`', keyEnShift: '~', code: 'Backquote', keyCode: 192,
+        keyRu: 'ё', keyRuShift: 'Ё', keyEn: '`', keyEnShift: '~', code: 'Backquote',
       },
       1: {
-        keyRu: '1', keyRuShift: '!', keyEn: '1', keyEnShift: '!', code: 'Digit1', keyCode: 49,
+        keyRu: '1', keyRuShift: '!', keyEn: '1', keyEnShift: '!', code: 'Digit1',
       },
       2: {
-        keyRu: '2', keyRuShift: '"', keyEn: '2', keyEnShift: '@', code: 'Digit2', keyCode: 50,
+        keyRu: '2', keyRuShift: '"', keyEn: '2', keyEnShift: '@', code: 'Digit2',
       },
       3: {
-        keyRu: '3', keyRuShift: '№', keyEn: '3', keyEnShift: '#', code: 'Digit3', keyCode: 51,
+        keyRu: '3', keyRuShift: '№', keyEn: '3', keyEnShift: '#', code: 'Digit3',
       },
       4: {
-        keyRu: '4', keyRuShift: ';', keyEn: '4', keyEnShift: '$', code: 'Digit4', keyCode: 52,
+        keyRu: '4', keyRuShift: ';', keyEn: '4', keyEnShift: '$', code: 'Digit4',
       },
       5: {
-        keyRu: '5', keyRuShift: '%', keyEn: '5', keyEnShift: '%', code: 'Digit5', keyCode: 53,
+        keyRu: '5', keyRuShift: '%', keyEn: '5', keyEnShift: '%', code: 'Digit5',
       },
       6: {
-        keyRu: '6', keyRuShift: ':', keyEn: '6', keyEnShift: '^', code: 'Digit6', keyCode: 54,
+        keyRu: '6', keyRuShift: ':', keyEn: '6', keyEnShift: '^', code: 'Digit6',
       },
       7: {
-        keyRu: '7', keyRuShift: '?', keyEn: '7', keyEnShift: '&', code: 'Digit7', keyCode: 55,
+        keyRu: '7', keyRuShift: '?', keyEn: '7', keyEnShift: '&', code: 'Digit7',
       },
       8: {
-        keyRu: '8', keyRuShift: '*', keyEn: '8', keyEnShift: '*', code: 'Digit8', keyCode: 56,
+        keyRu: '8', keyRuShift: '*', keyEn: '8', keyEnShift: '*', code: 'Digit8',
       },
       9: {
-        keyRu: '9', keyRuShift: '(', keyEn: '9', keyEnShift: '(', code: 'Digit9', keyCode: 57,
+        keyRu: '9', keyRuShift: '(', keyEn: '9', keyEnShift: '(', code: 'Digit9',
       },
       10: {
-        keyRu: '0', keyRuShift: ')', keyEn: '0', keyEnShift: ')', code: 'Digit0', keyCode: 48,
+        keyRu: '0', keyRuShift: ')', keyEn: '0', keyEnShift: ')', code: 'Digit0',
       },
       11: {
-        keyRu: '-', keyRuShift: '_', keyEn: '-', keyEnShift: '_', code: 'Minus', keyCode: 189,
+        keyRu: '-', keyRuShift: '_', keyEn: '-', keyEnShift: '_', code: 'Minus',
       },
       12: {
-        keyRu: '=', keyRuShift: '+', keyEn: '=', keyEnShift: '+', code: 'Equal', keyCode: 187,
+        keyRu: '=', keyRuShift: '+', keyEn: '=', keyEnShift: '+', code: 'Equal',
       },
       13: {
-        keyRu: 'Backspace', keyRuShift: 'Backspace', keyEn: 'Backspace', keyEnShift: 'Backspace', code: 'Backspace', keyCode: 8,
+        keyRu: 'Backspace', keyRuShift: 'Backspace', keyEn: 'Backspace', keyEnShift: 'Backspace', code: 'Backspace',
       },
 
       14: {
-        keyRu: 'Tab', keyRuShift: 'Tab', keyEn: 'Tab', keyEnShift: 'Tab', code: 'Tab', keyCode: 9,
+        keyRu: 'Tab', keyRuShift: 'Tab', keyEn: 'Tab', keyEnShift: 'Tab', code: 'Tab',
       },
       15: {
-        keyRu: 'й', keyRuShift: 'Й', keyEn: 'q', keyEnShift: 'Q', code: 'KeyQ', keyCode: 81,
+        keyRu: 'й', keyRuShift: 'Й', keyEn: 'q', keyEnShift: 'Q', code: 'KeyQ',
       },
       16: {
-        keyRu: 'ц', keyRuShift: 'Ц', keyEn: 'w', keyEnShift: 'W', code: 'KeyW', keyCode: 87,
+        keyRu: 'ц', keyRuShift: 'Ц', keyEn: 'w', keyEnShift: 'W', code: 'KeyW',
       },
       17: {
-        keyRu: 'у', keyRuShift: 'У', keyEn: 'e', keyEnShift: 'E', code: 'KeyE', keyCode: 69,
+        keyRu: 'у', keyRuShift: 'У', keyEn: 'e', keyEnShift: 'E', code: 'KeyE',
       },
       18: {
-        keyRu: 'к', keyRuShift: 'К', keyEn: 'r', keyEnShift: 'R', code: 'KeyR', keyCode: 82,
+        keyRu: 'к', keyRuShift: 'К', keyEn: 'r', keyEnShift: 'R', code: 'KeyR',
       },
       19: {
-        keyRu: 'е', keyRuShift: 'Е', keyEn: 't', keyEnShift: 'T', code: 'KeyT', keyCode: 84,
+        keyRu: 'е', keyRuShift: 'Е', keyEn: 't', keyEnShift: 'T', code: 'KeyT',
       },
       20: {
-        keyRu: 'н', keyRuShift: 'Н', keyEn: 'y', keyEnShift: 'Y', code: 'KeyY', keyCode: 89,
+        keyRu: 'н', keyRuShift: 'Н', keyEn: 'y', keyEnShift: 'Y', code: 'KeyY',
       },
       21: {
-        keyRu: 'г', keyRuShift: 'Г', keyEn: 'u', keyEnShift: 'U', code: 'KeyU', keyCode: 85,
+        keyRu: 'г', keyRuShift: 'Г', keyEn: 'u', keyEnShift: 'U', code: 'KeyU',
       },
       22: {
-        keyRu: 'ш', keyRuShift: 'Ш', keyEn: 'i', keyEnShift: 'I', code: 'KeyI', keyCode: 73,
+        keyRu: 'ш', keyRuShift: 'Ш', keyEn: 'i', keyEnShift: 'I', code: 'KeyI',
       },
       23: {
-        keyRu: 'щ', keyRuShift: 'Щ', keyEn: 'o', keyEnShift: 'O', code: 'KeyO', keyCode: 79,
+        keyRu: 'щ', keyRuShift: 'Щ', keyEn: 'o', keyEnShift: 'O', code: 'KeyO',
       },
       24: {
-        keyRu: 'з', keyRuShift: 'З', keyEn: 'p', keyEnShift: 'P', code: 'KeyP', keyCode: 80,
+        keyRu: 'з', keyRuShift: 'З', keyEn: 'p', keyEnShift: 'P', code: 'KeyP',
       },
       25: {
-        keyRu: 'х', keyRuShift: 'Х', keyEn: '[', keyEnShift: '{', code: 'BracketLeft', keyCode: 219,
+        keyRu: 'х', keyRuShift: 'Х', keyEn: '[', keyEnShift: '{', code: 'BracketLeft',
       },
       26: {
-        keyRu: 'ъ', keyRuShift: 'Ъ', keyEn: ']', keyEnShift: '}', code: 'BracketRight', keyCode: 221,
+        keyRu: 'ъ', keyRuShift: 'Ъ', keyEn: ']', keyEnShift: '}', code: 'BracketRight',
       },
       27: {
-        keyRu: '\\', keyRuShift: '|', keyEn: '\\', keyEnShift: '/', code: 'Backslash', keyCode: 220,
+        keyRu: '\\', keyRuShift: '|', keyEn: '\\', keyEnShift: '/', code: 'Backslash',
       },
       28: {
-        keyRu: 'Del', keyRuShift: 'Del', keyEn: 'Del', keyEnShift: 'Del', code: 'Delete', keyCode: 46,
+        keyRu: 'Del', keyRuShift: 'Del', keyEn: 'Del', keyEnShift: 'Del', code: 'Delete',
       },
       29: {
-        keyRu: 'CapsLock', keyRuShift: 'CapsLock', keyEn: 'CapsLock', keyEnShift: 'CapsLock', code: 'CapsLock', keyCode: 20,
+        keyRu: 'CapsLock', keyRuShift: 'CapsLock', keyEn: 'CapsLock', keyEnShift: 'CapsLock', code: 'CapsLock',
       },
       30: {
-        keyRu: 'ф', keyRuShift: 'Ф', keyEn: 'a', keyEnShift: 'A', code: 'KeyA', keyCode: 65,
+        keyRu: 'ф', keyRuShift: 'Ф', keyEn: 'a', keyEnShift: 'A', code: 'KeyA',
       },
       31: {
-        keyRu: 'ы', keyRuShift: 'Ы', keyEn: 's', keyEnShift: 'S', code: 'KeyS', keyCode: 83,
+        keyRu: 'ы', keyRuShift: 'Ы', keyEn: 's', keyEnShift: 'S', code: 'KeyS',
       },
       32: {
-        keyRu: 'в', keyRuShift: 'В', keyEn: 'd', keyEnShift: 'D', code: 'KeyD', keyCode: 68,
+        keyRu: 'в', keyRuShift: 'В', keyEn: 'd', keyEnShift: 'D', code: 'KeyD',
       },
       33: {
-        keyRu: 'а', keyRuShift: 'А', keyEn: 'f', keyEnShift: 'F', code: 'KeyF', keyCode: 70,
+        keyRu: 'а', keyRuShift: 'А', keyEn: 'f', keyEnShift: 'F', code: 'KeyF',
       },
       34: {
-        keyRu: 'п', keyRuShift: 'П', keyEn: 'g', keyEnShift: 'G', code: 'KeyG', keyCode: 71,
+        keyRu: 'п', keyRuShift: 'П', keyEn: 'g', keyEnShift: 'G', code: 'KeyG',
       },
       35: {
-        keyRu: 'р', keyRuShift: 'Р', keyEn: 'h', keyEnShift: 'H', code: 'KeyH', keyCode: 72,
+        keyRu: 'р', keyRuShift: 'Р', keyEn: 'h', keyEnShift: 'H', code: 'KeyH',
       },
       36: {
-        keyRu: 'о', keyRuShift: 'О', keyEn: 'j', keyEnShift: 'J', code: 'KeyJ', keyCode: 74,
+        keyRu: 'о', keyRuShift: 'О', keyEn: 'j', keyEnShift: 'J', code: 'KeyJ',
       },
       37: {
-        keyRu: 'л', keyRuShift: 'Л', keyEn: 'k', keyEnShift: 'K', code: 'KeyK', keyCode: 75,
+        keyRu: 'л', keyRuShift: 'Л', keyEn: 'k', keyEnShift: 'K', code: 'KeyK',
       },
       38: {
-        keyRu: 'д', keyRuShift: 'Д', keyEn: 'l', keyEnShift: 'L', code: 'KeyL', keyCode: 76,
+        keyRu: 'д', keyRuShift: 'Д', keyEn: 'l', keyEnShift: 'L', code: 'KeyL',
       },
       39: {
-        keyRu: 'ж', keyRuShift: 'Ж', keyEn: ';', keyEnShift: ':', code: 'Semicolon', keyCode: 186,
+        keyRu: 'ж', keyRuShift: 'Ж', keyEn: ';', keyEnShift: ':', code: 'Semicolon',
       },
       40: {
-        keyRu: 'э', keyRuShift: 'Э', keyEn: '\'', keyEnShift: '"', code: 'Quote', keyCode: 222,
+        keyRu: 'э', keyRuShift: 'Э', keyEn: '\'', keyEnShift: '"', code: 'Quote',
       },
       41: {
-        keyRu: 'Enter', keyRuShift: 'Enter', keyEn: 'Enter', keyEnShift: 'Enter', code: 'Enter', keyCode: 13,
+        keyRu: 'Enter', keyRuShift: 'Enter', keyEn: 'Enter', keyEnShift: 'Enter', code: 'Enter',
       },
       42: {
-        keyRu: 'Shift', keyRuShift: 'Shift', keyEn: 'Shift', keyEnShift: 'Shift', code: 'ShiftLeft', keyCode: 16,
+        keyRu: 'Shift', keyRuShift: 'Shift', keyEn: 'Shift', keyEnShift: 'Shift', code: 'ShiftLeft',
       },
       43: {
-        keyRu: 'я', keyRuShift: 'Я', keyEn: 'z', keyEnShift: 'Z', code: 'KeyZ', keyCode: 90,
+        keyRu: 'я', keyRuShift: 'Я', keyEn: 'z', keyEnShift: 'Z', code: 'KeyZ',
       },
       44: {
-        keyRu: 'ч', keyRuShift: 'Ч', keyEn: 'x', keyEnShift: 'X', code: 'KeyX', keyCode: 88,
+        keyRu: 'ч', keyRuShift: 'Ч', keyEn: 'x', keyEnShift: 'X', code: 'KeyX',
       },
       45: {
-        keyRu: 'с', keyRuShift: 'С', keyEn: 'c', keyEnShift: 'C', code: 'KeyC', keyCode: 67,
+        keyRu: 'с', keyRuShift: 'С', keyEn: 'c', keyEnShift: 'C', code: 'KeyC',
       },
       46: {
-        keyRu: 'м', keyRuShift: 'М', keyEn: 'v', keyEnShift: 'V', code: 'KeyV', keyCode: 86,
+        keyRu: 'м', keyRuShift: 'М', keyEn: 'v', keyEnShift: 'V', code: 'KeyV',
       },
       47: {
-        keyRu: 'и', keyRuShift: 'И', keyEn: 'b', keyEnShift: 'B', code: 'KeyB', keyCode: 66,
+        keyRu: 'и', keyRuShift: 'И', keyEn: 'b', keyEnShift: 'B', code: 'KeyB',
       },
       48: {
-        keyRu: 'т', keyRuShift: 'Т', keyEn: 'n', keyEnShift: 'N', code: 'KeyN', keyCode: 78,
+        keyRu: 'т', keyRuShift: 'Т', keyEn: 'n', keyEnShift: 'N', code: 'KeyN',
       },
       49: {
-        keyRu: 'ь', keyRuShift: 'Ь', keyEn: 'm', keyEnShift: 'M', code: 'KeyM', keyCode: 77,
+        keyRu: 'ь', keyRuShift: 'Ь', keyEn: 'm', keyEnShift: 'M', code: 'KeyM',
       },
       50: {
-        keyRu: 'б', keyRuShift: 'Б', keyEn: ',', keyEnShift: '<', code: 'Comma', keyCode: 188,
+        keyRu: 'б', keyRuShift: 'Б', keyEn: ',', keyEnShift: '<', code: 'Comma',
       },
       51: {
-        keyRu: 'ю', keyRuShift: 'Ю', keyEn: '.', keyEnShift: '>', code: 'Period', keyCode: 190,
+        keyRu: 'ю', keyRuShift: 'Ю', keyEn: '.', keyEnShift: '>', code: 'Period',
       },
       52: {
-        keyRu: '.', keyRuShift: ',', keyEn: '/', keyEnShift: '?', code: 'Slash', keyCode: 191,
+        keyRu: '.', keyRuShift: ',', keyEn: '/', keyEnShift: '?', code: 'Slash',
       },
       53: {
-        keyRu: '🡅', keyRuShift: '🡅', keyEn: '🡅', keyEnShift: '🡅', code: 'ArrowUp', keyCode: 38,
+        keyRu: '🡅', keyRuShift: '🡅', keyEn: '🡅', keyEnShift: '🡅', code: 'ArrowUp',
       },
       54: {
-        keyRu: 'Shift', keyRuShift: 'Shift', keyEn: 'Shift', keyEnShift: 'Shift', code: 'ShiftRight', keyCode: 16,
+        keyRu: 'Shift', keyRuShift: 'Shift', keyEn: 'Shift', keyEnShift: 'Shift', code: 'ShiftRight',
       },
       55: {
-        keyRu: 'Ctrl', keyRuShift: 'Ctrl', keyEn: 'Ctrl', keyEnShift: 'Ctrl', code: 'ControlLeft', keyCode: 17,
+        keyRu: 'Ctrl', keyRuShift: 'Ctrl', keyEn: 'Ctrl', keyEnShift: 'Ctrl', code: 'ControlLeft',
       },
       56: {
-        keyRu: 'Meta', keyRuShift: 'Meta', keyEn: 'Meta', keyEnShift: 'Meta', code: 'MetaLeft', keyCode: 91,
+        keyRu: 'Meta', keyRuShift: 'Meta', keyEn: 'Meta', keyEnShift: 'Meta', code: 'MetaLeft',
       },
       57: {
-        keyRu: 'Alt', keyRuShift: 'Alt', keyEn: 'Alt', keyEnShift: 'Alt', code: 'AltLeft', keyCode: 18,
+        keyRu: 'Alt', keyRuShift: 'Alt', keyEn: 'Alt', keyEnShift: 'Alt', code: 'AltLeft',
       },
       58: {
-        keyRu: ' ', keyRuShift: ' ', keyEn: ' ', keyEnShift: ' ', code: 'Space', keyCode: 32,
+        keyRu: ' ', keyRuShift: ' ', keyEn: ' ', keyEnShift: ' ', code: 'Space',
       },
       59: {
-        keyRu: 'Alt', keyRuShift: 'Alt', keyEn: 'Alt', keyEnShift: 'Alt', code: 'AltRight', keyCode: 18,
+        keyRu: 'Alt', keyRuShift: 'Alt', keyEn: 'Alt', keyEnShift: 'Alt', code: 'AltRight',
       },
       60: {
-        keyRu: '🡄', keyRuShift: '🡄', keyEn: '🡄', keyEnShift: '🡄', code: 'ArrowLeft', keyCode: 37,
+        keyRu: '🡄', keyRuShift: '🡄', keyEn: '🡄', keyEnShift: '🡄', code: 'ArrowLeft',
       },
       61: {
-        keyRu: '🡇', keyRuShift: '🡇', keyEn: '🡇', keyEnShift: '🡇', code: 'ArrowDown', keyCode: 40,
+        keyRu: '🡇', keyRuShift: '🡇', keyEn: '🡇', keyEnShift: '🡇', code: 'ArrowDown',
       },
       62: {
-        keyRu: '🡆', keyRuShift: '🡆', keyEn: '🡆', keyEnShift: '🡆', code: 'ArrowRight', keyCode: 39,
+        keyRu: '🡆', keyRuShift: '🡆', keyEn: '🡆', keyEnShift: '🡆', code: 'ArrowRight',
       },
       63: {
-        keyRu: 'Ctrl', keyRuShift: 'Ctrl', keyEn: 'Ctrl', keyEnShift: 'Ctrl', code: 'ControlRight', keyCode: 17,
+        keyRu: 'Ctrl', keyRuShift: 'Ctrl', keyEn: 'Ctrl', keyEnShift: 'Ctrl', code: 'ControlRight',
       },
     };
   }

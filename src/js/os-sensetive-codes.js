@@ -1,5 +1,5 @@
 export default class OsSensetiveCodes {
-  get keys() {
+  get codes() {
     return {
       'Meta': { windows: 'Win', other: 'Cmd' },
       'Enter': { windows: 'Enter', other: 'Return' },
@@ -8,6 +8,6 @@ export default class OsSensetiveCodes {
   }
 
   isOsSensetive(code) {
-    return Array.from(Object.keys(this.keys)).includes(code);
+    return Array.from(Object.keys(this.codes)).includes(code);
   }
 }

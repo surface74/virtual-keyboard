@@ -1,14 +1,14 @@
 export default class Strings {
-  get strings() {
+  getStrings() {
     return {
-      "Ru": {
-        "tooltipOS": "Клавиатура создана в операционной системе %1",
-        "tooltipHotKeys": "Для переключения языка комбинация: левый Ctrl + Alt"
+      "tooltipOS": {
+        "Ru": "Клавиатура создана в операционной системе %1",
+        "En": "Keyboard was created in OS %1",
       },
-      "En": {
-        "tooltipOS": "Keyboard was created in OS %1",
-        "tooltipHotKeys": "To switch locale press: left Ctrl + Alt"
-      }
+      "tooltipHotKeys": {
+        "Ru":"Для переключения языка комбинация: левый Ctrl + Alt",
+        "En": "To switch locale press: left Ctrl + Alt",
+      },
     }
   }
 }

@@ -1,6 +1,5 @@
 export default class HtmlHelper {
   createElement({ tag = 'div', text = '', attr = {} } = {}) {
-    if (tag) {
       const elem = document.createElement(tag);
       if (text) {
         elem.textContent = text;
@@ -10,8 +9,5 @@ export default class HtmlHelper {
         elem.setAttribute(key, attr[key]);
       }
       return elem;
-    } else {
-      return null;
-    }
   }
 }

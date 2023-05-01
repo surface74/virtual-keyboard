@@ -1,19 +1,21 @@
+import KeySet from './key-set.js';
 import Strings from './strings.js';
 import HtmlHelper from './html-helper.js';
 import OsSensetiveCodes from './os-sensetive-codes.js';
 import Locales from './locales.js';
 
 export default class Keyboard {
-  constructor(keys) {
-    this.strings = new Strings().strings;
-    this.keys = keys;
+  constructor() {
+    this.strings = new Strings().getStrings();
+    this.keys = new KeySet().getKeys();
     this.locales = new Locales().getLocales();
-    this.locale = this.getLocale();
+    this.currentLocale = this.getLocale();
+    this.helper = new HtmlHelper();
+    this.osSensetives = new OsSensetiveCodes();
+
     this.shiftLeftPressed = false;
     this.shiftRightPressed = false;
     this.capsLockPressed = false;
-    this.helper = new HtmlHelper();
-    this.osSensetives = new OsSensetiveCodes();
     this.platform = navigator.userAgentData.platform;
     this.ignoredForPrint = ['Alt', 'Ctrl', 'CapsLock', 'Shift', 'Win', 'Cmd'];
     this.lastClickedButtonId = null;
@@ -25,7 +27,7 @@ export default class Keyboard {
       const buttons = row.querySelectorAll('.button');
       for (const button of buttons) {
         const buttonId = button.dataset.id;
-        const captionSource = `key${this.locale}${this.isShiftPressed() ? 'Shift' : ''}`;
+        const captionSource = `key${this.currentLocale}${this.isShiftPressed() ? 'Shift' : ''}`;
         if (buttonId in this.keys && captionSource in this.keys[buttonId]) {
           let buttonCaption = this.keys[buttonId][captionSource] || '';
           if (this.capsLockPressed && this.isLetter(buttonCaption)) {
@@ -33,8 +35,8 @@ export default class Keyboard {
           }
           if (this.osSensetives.isOsSensetive(buttonCaption)) {
             buttonCaption = (this.platform === 'Windows')
-              ? this.osSensetives.keys[buttonCaption].windows
-              : this.osSensetives.keys[buttonCaption].other;
+              ? this.osSensetives.codes[buttonCaption].windows
+              : this.osSensetives.codes[buttonCaption].other;
           }
 
           button.textContent = buttonCaption;
@@ -48,11 +50,12 @@ export default class Keyboard {
   }
 
   refreshTooltips() {
-    const os = this.strings[this.locale].tooltipOS;
     const tooltipOS = document.querySelector('.footer__tooltip.current-os');
     const tooltipHotKeys = document.querySelector('.footer__tooltip.hot-keys');
+
+    const os = this.strings.tooltipOS[this.currentLocale];
     tooltipOS.textContent = os.replace('%1', this.platform);
-    tooltipHotKeys.textContent = this.strings[this.locale].tooltipHotKeys;
+    tooltipHotKeys.textContent = this.strings.tooltipHotKeys[this.currentLocale];
   }
 
   getLocale() {
@@ -84,6 +87,9 @@ export default class Keyboard {
     this.display = document.querySelector('.display');
     this.keyboard = document.querySelector('.keyboard');
     this.addEventListeners();
+
+    this.refreshKeyboard();
+    this.refreshTooltips();
   }
 
   addEventListeners() {
@@ -325,7 +331,6 @@ export default class Keyboard {
     const code = this.keys[e.target.dataset.id].code;
 
     if (code !== 'CapsLock' && !code.startsWith('Shift')) {
-      console.log('Off');
       this.lightOffButton(code);
     }
   }
@@ -390,8 +395,8 @@ export default class Keyboard {
   }
 
   toggleLocale() {
-    this.locale = (this.locale === this.locales[0]) ? this.locales[1] : this.locales[0];
-    this.saveLocale(this.locale);
+    this.currentLocale = (this.currentLocale === this.locales[0]) ? this.locales[1] : this.locales[0];
+    this.saveLocale(this.currentLocale);
     this.refreshTooltips();
   }
 
