@@ -98,7 +98,7 @@ export default class Keyboard {
     this.keyboard.addEventListener('pointerdown', this.onPointerdown.bind(this));
     this.keyboard.addEventListener('pointerup', this.onPointerup.bind(this));
     this.keyboard.addEventListener('pointerout', this.onPointerout.bind(this));
-    this.display.addEventListener('click', this.onClick.bind(this));
+    this.display.addEventListener('click', this.checkShift.bind(this));
   }
 
   createSectionDisplay() {
@@ -267,7 +267,7 @@ export default class Keyboard {
     return this.helper.createElement(elementInfo);
   }
 
-  onClick(e) {
+  checkShift(e) {
     // check if Shift didn't pressed, but some Shift-buttons highlighted
     if (!e.shiftKey && this.isShiftPressed()) {
       if (this.shiftLeftPressed) {
