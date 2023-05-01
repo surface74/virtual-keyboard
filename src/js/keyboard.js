@@ -85,7 +85,10 @@ export default class Keyboard {
 
   createSectionDisplay() {
     const section = this.createElement({ tag: 'section', attr: { class: 'display-section wrapper' } });
-    const display = this.createElement({ tag: 'textarea', attr: { class: 'display', cols: '30', rows: '10' } });
+    const display = this.createElement({
+      tag: 'textarea',
+      attr: { class: 'display', cols: '30', rows: '10', autofocus: true }
+    });
     section.append(display);
 
     return section;
@@ -253,6 +256,7 @@ export default class Keyboard {
 
   onKeydown(e) {
     e.preventDefault();
+    this.display.focus();
     if (e.code === 'AltLeft' && e.ctrlKey ||
       e.code === 'ControlLeft' && e.altKey) {
       this.toggleLocale();
@@ -279,8 +283,10 @@ export default class Keyboard {
       return;
     }
 
-    this.lightOnButton(e.keyCode, e.code);
-    this.print(e.key);
+    const caption = this.lightOnButton(e.keyCode, e.code)?.textContent || '';
+    if (caption) {
+      this.print(caption);
+    }
   }
 
   onKeyup(e) {
@@ -320,6 +326,8 @@ export default class Keyboard {
     if (button) {
       button.classList.add('button_active');
     }
+
+    return button;
   }
 
   lightOffButton(keyCode, code) {
@@ -329,8 +337,12 @@ export default class Keyboard {
     }
   }
 
-  print(key) {
-    console.log('print', key);
+  print(input) {
+    let value = this.display.value;
+    const startPart = value.slice(0, this.display.selectionStart);
+    const endPart  = value.slice(this.display.selectionStart);
+    this.display.value = `${startPart}${input}${endPart}`;
+    this.display.selectionStart = this.display.selectionEnd = `${startPart}${input}`.length;
   }
 
   getButton(keyCode, code) {
