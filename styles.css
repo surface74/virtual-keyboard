@@ -473,13 +473,10 @@ img {
   background: #00cccc;
   color: #000000;
 }
-.button:active {
-  background: #00eeee;
-  color: #000000;
-  scale: 1.02;
-}
 
+.button:hover.button_active,
 .button_special.button_active,
+.button:active,
 .button_active {
   background: #00eeee;
   color: #000000;

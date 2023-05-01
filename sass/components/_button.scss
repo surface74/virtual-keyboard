@@ -16,15 +16,11 @@
     background: $color-button-hover;
     color: $color-button-hover-text;
   }
-
-  &:active {
-    background: $color-button-active;
-    color: $color-button-hover-text;
-    scale: 1.02;
-  }
 }
 
+.button:hover.button_active,
 .button_special.button_active,
+.button:active,
 .button_active {
   background: $color-button-active;
   color: $color-button-hover-text;
