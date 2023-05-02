@@ -18,6 +18,7 @@ export default class Keyboard {
     this.capsLockPressed = false;
     this.platform = navigator.userAgentData.platform;
     this.ignoredForPrint = ['Alt', 'Ctrl', 'CapsLock', 'Shift', 'Win', 'Cmd'];
+    this.arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp'];
     this.lastClickedButtonId = null;
   }
 
@@ -300,6 +301,11 @@ export default class Keyboard {
     const buttonId = e.target.dataset.id;
     const { code } = this.keys[buttonId];
 
+    // if (this.arrowKeys.includes(code)) {
+    //   this.emulateArrowButtonClick(code);
+    //   return;
+    // }
+
     if (code === 'CapsLock') {
       this.capsLockPressed = this.lightToggleButton(code);
       this.refreshKeyboard();
@@ -338,6 +344,11 @@ export default class Keyboard {
   }
 
   onKeydown(e) {
+    if (this.arrowKeys.includes(e.code)) {
+      this.lightOnButton(e.code);
+      return;
+    }
+
     e.preventDefault();
     this.display.focus();
     if ((e.code === 'AltLeft' && e.ctrlKey)
@@ -382,6 +393,7 @@ export default class Keyboard {
 
       this.lightOffButton(e.code);
 
+      // check that Shift really pressed
       if (this.isShiftPressed()) {
         this.display.click();
       }
