@@ -24,7 +24,7 @@
 .button_active {
   background: $color-button-active;
   color: $color-button-hover-text;
-  scale: 1.02;
+  transform: scale(1.02);
 }
 
 .button_special {
