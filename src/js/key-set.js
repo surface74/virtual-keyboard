@@ -162,7 +162,7 @@ export default class KeySet {
         keyRu: '.', keyRuShift: ',', keyEn: '/', keyEnShift: '?', code: 'Slash',
       },
       53: {
-        keyRu: '🡅', keyRuShift: '🡅', keyEn: '🡅', keyEnShift: '🡅', code: 'ArrowUp',
+        keyRu: '↑', keyRuShift: '↑', keyEn: '↑', keyEnShift: '↑', code: 'ArrowUp',
       },
       54: {
         keyRu: 'Shift', keyRuShift: 'Shift', keyEn: 'Shift', keyEnShift: 'Shift', code: 'ShiftRight',
@@ -183,13 +183,13 @@ export default class KeySet {
         keyRu: 'Alt', keyRuShift: 'Alt', keyEn: 'Alt', keyEnShift: 'Alt', code: 'AltRight',
       },
       60: {
-        keyRu: '🡄', keyRuShift: '🡄', keyEn: '🡄', keyEnShift: '🡄', code: 'ArrowLeft',
+        keyRu: '←', keyRuShift: '←', keyEn: '←', keyEnShift: '←', code: 'ArrowLeft',
       },
       61: {
-        keyRu: '🡇', keyRuShift: '🡇', keyEn: '🡇', keyEnShift: '🡇', code: 'ArrowDown',
+        keyRu: '↓', keyRuShift: '↓', keyEn: '↓', keyEnShift: '↓', code: 'ArrowDown',
       },
       62: {
-        keyRu: '🡆', keyRuShift: '🡆', keyEn: '🡆', keyEnShift: '🡆', code: 'ArrowRight',
+        keyRu: '→', keyRuShift: '→', keyEn: '→', keyEnShift: '→', code: 'ArrowRight',
       },
       63: {
         keyRu: 'Ctrl', keyRuShift: 'Ctrl', keyEn: 'Ctrl', keyEnShift: 'Ctrl', code: 'ControlRight',
