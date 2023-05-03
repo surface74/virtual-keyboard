@@ -480,7 +480,7 @@ img {
 .button_active {
   background: #00eeee;
   color: #000000;
-  scale: 1.02;
+  transform: scale(1.02);
 }
 
 .button_special {
