@@ -1,0 +1,13 @@
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  row-gap: $space-between;
+  @extend %border;
+  background: $color-keyboard-background;
+  padding: $space-between;
+}
+
+.keyboard__row {
+  display: flex;
+  column-gap: $space-between;
+}

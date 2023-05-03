@@ -1,0 +1,28 @@
+// Arial
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/arial-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/arial-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Arial";
+  font-style: italic;
+  font-weight: 400;
+  src: url("./assets/fonts/arial-italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Arial";
+  font-style: italic;
+  font-weight: 700;
+  src: url("./assets/fonts/arial-bold-italic.ttf") format("truetype");
+}

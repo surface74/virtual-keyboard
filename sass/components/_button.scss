@@ -1,0 +1,40 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  width: $button-size;
+  height: $button-size;
+  outline-style: none;
+  border: none;
+  border-radius: 10px;
+  background: $color-button;
+  color: $color-button-text;
+  transition: all 0.1s;
+
+  &:hover {
+    background: $color-button-hover;
+    color: $color-button-hover-text;
+  }
+}
+
+.button:hover.button_active,
+.button_special.button_active,
+.button:active,
+.button_active {
+  background: $color-button-active;
+  color: $color-button-hover-text;
+  transform: scale(1.02);
+}
+
+.button_special {
+  background: $color-button-special;
+}
+
+.button_double {
+  width: calc(2 * $button-size + $space-between);
+}
+
+.button_space {
+  width: calc(7 * $button-size + 6 * $space-between);
+}
