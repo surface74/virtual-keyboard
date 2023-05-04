@@ -432,13 +432,22 @@ img {
   margin: auto;
 }
 
+.caret-calculator {
+  display: inline-block;
+}
+
 .display {
   width: 100%;
-  font-size: 1.8rem;
-  letter-spacing: 0.2rem;
   resize: none;
   padding: 1rem;
   outline: none;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.display_font {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
 }
 
 .keyboard {

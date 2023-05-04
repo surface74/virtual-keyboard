@@ -13,4 +13,18 @@ export default class HtmlHelper {
     }
     return this.elem;
   }
+
+  static getCssWidth(element) {
+    const { width } = element.getBoundingClientRect();
+    const { paddingLeft, paddingRight } = getComputedStyle(element);
+    const { borderLeftWidth, borderRightWidth } = getComputedStyle(element);
+
+    const cssWidth = width
+      - Number.parseInt(paddingLeft, 10)
+      - Number.parseInt(paddingRight, 10)
+      - Number.parseFloat(borderLeftWidth)
+      - Number.parseFloat(borderRightWidth);
+
+    return cssWidth;
+  }
 }

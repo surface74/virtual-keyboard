@@ -3,6 +3,7 @@ import Strings from './strings.js';
 import HtmlHelper from './html-helper.js';
 import OsSensetiveCodes from './os-sensetive-codes.js';
 import Locales from './locales.js';
+import CaretCalculator from './caret-calculator.js';
 
 export default class Keyboard {
   constructor() {
@@ -12,6 +13,7 @@ export default class Keyboard {
     this.currentLocale = this.getLocale();
     this.helper = new HtmlHelper();
     this.osSensetives = new OsSensetiveCodes();
+    this.calculator = new CaretCalculator();
 
     this.shiftLeftPressed = false;
     this.shiftRightPressed = false;
@@ -84,6 +86,7 @@ export default class Keyboard {
 
     document.body.prepend(footer);
     document.body.prepend(main);
+    document.body.append(this.calculator.getCalculatorElement());
 
     this.display = document.querySelector('.display');
     this.keyboard = document.querySelector('.keyboard');
@@ -107,7 +110,7 @@ export default class Keyboard {
     const display = this.createElement({
       tag: 'textarea',
       attr: {
-        class: 'display', cols: '30', rows: '10', autofocus: true,
+        class: 'display display_font', cols: '30', rows: '10', autofocus: true,
       },
     });
     section.append(display);
@@ -281,6 +284,42 @@ export default class Keyboard {
     }
   }
 
+  handleArrowButtonClick(code) {
+    if (code === 'ArrowLeft') {
+      if (this.display.selectionStart > 0) {
+        this.display.selectionStart -= 1;
+      }
+    }
+
+    if (code === 'ArrowRight') {
+      if (this.display.selectionStart < this.display.value.length - 1) {
+        this.display.selectionStart += 1;
+      }
+    }
+
+    if (code === 'ArrowUp') {
+      const position = this.calculator.getUpperCaretPosition(
+        this.display.value,
+        this.display.selectionStart,
+        this.display,
+      );
+
+      // this.display.selectionStart = position;
+    }
+
+    if (code === 'ArrowDown') {
+      const position = this.calculator.countLowerCaretPosition(
+        this.display.value,
+        this.display.selectionStart,
+        this.display,
+      );
+      // this.display.selectionStart = position;
+    }
+
+    this.display.selectionEnd = this.display.selectionStart;
+    this.display.focus();
+  }
+
   onPointerout(e) {
     const { target } = e;
     if (!target.classList.contains('button')) {
@@ -301,10 +340,10 @@ export default class Keyboard {
     const buttonId = e.target.dataset.id;
     const { code } = this.keys[buttonId];
 
-    // if (this.arrowKeys.includes(code)) {
-    //   this.emulateArrowButtonClick(code);
-    //   return;
-    // }
+    if (this.arrowKeys.includes(code)) {
+      this.handleArrowButtonClick(code);
+      return;
+    }
 
     if (code === 'CapsLock') {
       this.capsLockPressed = this.lightToggleButton(code);

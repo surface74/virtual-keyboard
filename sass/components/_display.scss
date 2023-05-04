@@ -1,9 +1,14 @@
 .display {
   width: 100%;
-  font-size: 1.8rem;
-  letter-spacing: 0.2rem;
   resize: none;
   padding: $space-between;
   outline: none;
+  overflow-wrap: break-word;
+  word-break: break-all;
   @extend %border;
+}
+
+.display_font {
+  font-size: 1.8rem;
+  letter-spacing: 0.2rem;
 }
