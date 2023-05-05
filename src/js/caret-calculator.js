@@ -32,19 +32,41 @@ export default class CaretCalculator {
       }
     }
 
-    const row = firstInRows.reduce((acc, item, index) => {
-      if (item > caretPosition && !acc) {
-        return index;
-      }
-      return acc;
-    }, 0);
+    if (firstInRows.length === 1) { // there's just one row - do nothing
+      return caretPosition;
+    }
 
-    console.log('row: ', row);
+    const currentRow = { row: 0, startLetter: 0, lastLetter: 0 };
+    for (let i = 0; i < firstInRows.length; i += 1) {
+      if (caretPosition >= firstInRows[i]) {
+        currentRow.row = i;
+        currentRow.startLetter = firstInRows[i];
+        currentRow.lastLetter = (i === firstInRows.length - 1)
+          ? string.length - 1
+          : firstInRows[i + 1] - 1;
+      } else {
+        break;
+      }
+    }
+
+    if (currentRow.row === 0) { // on the top - do nothing
+      return caretPosition;
+    }
+
+    const offset = caretPosition - currentRow.startLetter;
+    const caretPos = (firstInRows[currentRow.row] - firstInRows[currentRow.row - 1] < offset)
+      ? firstInRows[currentRow.row] - 1
+      : firstInRows[currentRow.row - 1] + offset;
+
     console.log('firstInRows: ', firstInRows);
-    // console.log('string, this.calculatorWidth', `'${string} ': ${this.calculatorWidth}`);
+    console.log(`${currentRow.row}: ${currentRow.startLetter} -${currentRow.lastLetter}, carret: ${caretPosition} `);
+    console.log('offset: ', offset);
+    console.log('caretPos: ', caretPos);
+
+    return caretPos;
   }
 
-getLowerCaretPosition(string) {
+  getLowerCaretPosition(string) {
 
-}
+  }
 }

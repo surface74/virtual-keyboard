@@ -303,17 +303,18 @@ export default class Keyboard {
         this.display.selectionStart,
         this.display,
       );
-
-      // this.display.selectionStart = position;
+      this.display.selectionStart = position;
+      // this.printLetter('↑'); // loopback
     }
 
     if (code === 'ArrowDown') {
-      const position = this.calculator.countLowerCaretPosition(
-        this.display.value,
-        this.display.selectionStart,
-        this.display,
-      );
+      // const position = this.calculator.countLowerCaretPosition(
+      //   this.display.value,
+      //   this.display.selectionStart,
+      //   this.display,
+      // );
       // this.display.selectionStart = position;
+      this.printLetter('↓'); // loopback
     }
 
     this.display.selectionEnd = this.display.selectionStart;
